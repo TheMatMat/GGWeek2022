@@ -258,6 +258,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1069630224386836461, guid: 499987c9cd4fed64985cd89cfe89ab1d, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069630224386836461, guid: 499987c9cd4fed64985cd89cfe89ab1d, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2925054157876187583, guid: 499987c9cd4fed64985cd89cfe89ab1d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -276,7 +284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3961345049021519894, guid: 499987c9cd4fed64985cd89cfe89ab1d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3961345049021519894, guid: 499987c9cd4fed64985cd89cfe89ab1d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -329,7 +337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3010099917906094538, guid: aee39e1d54d298d4aa1b72b23470e44a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3010099917906094538, guid: aee39e1d54d298d4aa1b72b23470e44a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -362,6 +370,10 @@ PrefabInstance:
     - target: {fileID: 4010564295840161891, guid: aee39e1d54d298d4aa1b72b23470e44a, type: 3}
       propertyPath: m_Name
       value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7158268914449538818, guid: aee39e1d54d298d4aa1b72b23470e44a, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aee39e1d54d298d4aa1b72b23470e44a, type: 3}

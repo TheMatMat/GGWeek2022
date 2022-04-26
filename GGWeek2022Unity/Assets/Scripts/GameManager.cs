@@ -17,7 +17,7 @@ namespace EntireGame
             //Debug.Log(backgroundTiles.Peek().GetComponent<SpriteRenderer>().bounds.size);
 
             //Instanciate 3 first tiles
-            backgroundTiles.Add(Instantiate(tilePrefab, new Vector3(0 - tilePrefab.GetComponent<SpriteRenderer>().bounds.size.x / 2, 0, 0), Quaternion.identity));
+            backgroundTiles.Add(Instantiate(tilePrefab, new Vector3(0 - tilePrefab.GetComponent<SpriteRenderer>().bounds.size.x / 2, 0, 1), Quaternion.identity));
             backgroundTiles.Add(Instantiate(tilePrefab, backgroundTiles[0].transform.position + new Vector3(backgroundTiles[0].GetComponent<SpriteRenderer>().bounds.size.x, 0, 0), Quaternion.identity));
             backgroundTiles.Add(Instantiate(tilePrefab, backgroundTiles[1].transform.position + new Vector3(backgroundTiles[1].GetComponent<SpriteRenderer>().bounds.size.x, 0, 0), Quaternion.identity));
         }

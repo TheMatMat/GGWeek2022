@@ -7,7 +7,8 @@ namespace EntireGame
 {
     public class BackgroundTile : MonoBehaviour
     {
-        private float tileSpeed = 2.0f;
+        public GameManager gm;
+        private float tileSpeed;
 
         public float TileSpeed
         {
@@ -26,6 +27,10 @@ namespace EntireGame
         // Start is called before the first frame update
         void Start()
         {
+            gm = GameObject.Find("/GameManager").GetComponent<GameManager>();
+
+            tileSpeed = gm.GeneralSpeed;
+
             randomColor = new Color(Random.Range(0F,1F), Random.Range(0, 1F), Random.Range(0, 1F));
 
             /*//apply random sprite
@@ -38,6 +43,9 @@ namespace EntireGame
         // Update is called once per frame
         void Update()
         {
+            //check and update speed
+            tileSpeed = gm.GeneralSpeed;
+
             //tileMove
             transform.position -= new Vector3(2.0f * tileSpeed * Time.deltaTime, 0, 0);
 

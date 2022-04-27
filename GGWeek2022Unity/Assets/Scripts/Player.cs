@@ -7,8 +7,10 @@ namespace EntireGame
 
     public class Player : MonoBehaviour
     {
+        [Header("-- Power --")]
         public Power playerPower = Power.NONE;
 
+        [Header("-- Jump and Dash --")]
         public float jumpHeight = 4.0f;
         public float dashLength = 4.0f;
         public float dashTime = 0.05f;
@@ -26,6 +28,10 @@ namespace EntireGame
 
         private Vector2 jumpForce;
         private float originPosX, dashPosX;
+
+        [Header("-- Obstacles --")]
+        [SerializeField]
+        public List<Obstacle> obstaclesInRange;
 
         // Start is called before the first frame update
         void Start()
@@ -69,6 +75,7 @@ namespace EntireGame
             else if (Input.GetKeyDown(KeyCode.R))
             {
                 playerPower = Power.ATTACK;
+                PlayerAttack();
                 Debug.Log(playerPower);
             }
 
@@ -79,6 +86,7 @@ namespace EntireGame
             }   
             else if (Input.GetKeyUp(KeyCode.R))
             {
+
                 ResetPower();
             }
 
@@ -146,7 +154,14 @@ namespace EntireGame
         }
         private void PlayerAttack()
         {
+            for(int i = 0; i < obstaclesInRange.Count; i++)
+            {
+                Debug.Log("un tour");
+                Debug.Log(i);
 
+                Obstacle oneObstacle = obstaclesInRange[i];
+                Destroy(oneObstacle.gameObject);
+            }
         }
 
         private void ResetPower()
@@ -159,9 +174,27 @@ namespace EntireGame
             //jump end
             if (collision.gameObject.tag == "floor" && playerPower == Power.JUMP)
             {
-                ResetPower();
+               ResetPower();
                isJumping = false;
             }
         }
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            Obstacle newObstacleInRange = other.gameObject.GetComponent<ObstacleStone>();
+
+            if (newObstacleInRange != null && !obstaclesInRange.Contains(newObstacleInRange))
+                obstaclesInRange.Add(newObstacleInRange);
+        }
+
+        void OnTriggerExit2D(Collider2D other)
+        {
+            Obstacle oldObstacleInRange = other.gameObject.GetComponent<ObstacleStone>();
+
+            if (oldObstacleInRange != null)
+                obstaclesInRange.Remove(oldObstacleInRange);
+        }
+
+        
     }
 }

@@ -2,22 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleFireWall : Obstacle
+namespace EntireGame
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ObstacleFireWall : Obstacle
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            gm = GameObject.Find("/GameManager").GetComponent<GameManager>();
 
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("FireWall: " + other.gameObject.name);
+            obstacleSpeed = gm.GeneralSpeed;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            obstacleSpeed = gm.GeneralSpeed;
+
+            //obstacleMove
+            transform.position -= new Vector3(2.0f * obstacleSpeed * Time.deltaTime, 0, 0);
+        }
+
+        public override void CheckForDeath()
+        {
+            Debug.Log("and there");
+        }
+
+
     }
 }
+

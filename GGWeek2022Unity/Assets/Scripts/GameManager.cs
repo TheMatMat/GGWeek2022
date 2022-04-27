@@ -9,12 +9,19 @@ namespace EntireGame
         [SerializeField]
         public List<GameObject> backgroundTiles;
         public GameObject tilePrefab;
+        [SerializeField]
+        private float generalSpeed;
+
+        public float GeneralSpeed
+        {
+            get { return generalSpeed; }
+            set { generalSpeed = value; }
+        }
 
         // Start is called before the first frame update
         void Start()
         {
-            //Debug.Log(backgroundTiles.Count);
-            //Debug.Log(backgroundTiles.Peek().GetComponent<SpriteRenderer>().bounds.size);
+            generalSpeed = 2.0f;
 
             //Instanciate 3 first tiles
             backgroundTiles.Add(Instantiate(tilePrefab, new Vector3(0 - tilePrefab.GetComponent<SpriteRenderer>().bounds.size.x / 2, 0, 1), Quaternion.identity));
@@ -44,6 +51,11 @@ namespace EntireGame
             GameObject tileToAdd = Instantiate(tilePrefab, lastTile.transform.position + new Vector3(lastTile.GetComponent<SpriteRenderer>().bounds.size.x - 1, 0, 0), Quaternion.identity);
 
             backgroundTiles.Add(tileToAdd);
+        }
+
+        public void GameOver()
+        {
+            generalSpeed = 0;
         }
     }
 }

@@ -97,3 +97,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileSpeed: 2
   tile: {fileID: 7696013360207084675}
+  randomColor: {r: 0, g: 0, b: 0, a: 0}

@@ -21,9 +21,4 @@ public class Obstacle : MonoBehaviour
         //obstacleMove
         transform.position -= new Vector3(2.0f * obstacleSpeed * Time.deltaTime, 0, 0);
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log(other.gameObject.name);
-    }
 }

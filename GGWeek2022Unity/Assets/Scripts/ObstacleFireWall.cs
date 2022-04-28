@@ -22,7 +22,7 @@ namespace EntireGame
 
             ResizeCollider();
 
-            Debug.Log("fire wall");
+            //Debug.Log("fire wall");
         }
 
         // Update is called once per frame

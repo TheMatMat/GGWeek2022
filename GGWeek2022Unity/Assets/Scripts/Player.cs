@@ -33,6 +33,8 @@ namespace EntireGame
         [SerializeField]
         public List<Obstacle> obstaclesInRange;
 
+        public Animation runAnim;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -155,9 +157,6 @@ namespace EntireGame
         {
             for(int i = 0; i < obstaclesInRange.Count; i++)
             {
-                Debug.Log("un tour");
-                Debug.Log(i);
-
                 Obstacle oneObstacle = obstaclesInRange[i];
                 Destroy(oneObstacle.gameObject);
             }

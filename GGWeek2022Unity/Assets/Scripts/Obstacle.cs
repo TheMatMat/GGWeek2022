@@ -59,7 +59,7 @@ namespace EntireGame
         public void ResizeCollider()
         {
             Vector2 S = gameObject.transform.Find("ObstacleSprite").GetComponent<SpriteRenderer>().sprite.bounds.size;
-            gameObject.GetComponent<BoxCollider2D>().size = S;
+            gameObject.GetComponent<BoxCollider2D>().size = S - new Vector2(0.2f, 0.2f);
         }
 
     }

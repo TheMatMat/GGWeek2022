@@ -16,7 +16,7 @@ namespace EntireGame
             sprites = this.gameObject.GetComponent<Obstacle>().sprites;
             this.gameObject.transform.Find("ObstacleSprite").GetComponent<SpriteRenderer>().sprite = sprites[0];
             this.gameObject.transform.Find("ObstacleSprite").GetComponent<SpriteRenderer>().flipX = true;
-            Debug.Log("weapon");
+            //Debug.Log("weapon");
 
             ResizeCollider();
         }

@@ -14,7 +14,6 @@ namespace EntireGame
         public GameObject tilePrefab;
 
         private int indexBGTile = 0;
-        private int indexFGTile = 0;
 
         [Header("-- Game Speed --")]
         [SerializeField]

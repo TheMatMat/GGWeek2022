@@ -21,10 +21,13 @@ namespace EntireGame
 
             sprites = this.gameObject.GetComponent<Obstacle>().sprites;
             this.gameObject.transform.Find("ObstacleSprite").GetComponent<SpriteRenderer>().sprite = sprites[2];
-            Debug.Log("fire ball");
+            //Debug.Log("fire ball");
+
 
             targetPos = player.gameObject.transform.position;
             dir = (targetPos - this.gameObject.transform.position).normalized;
+
+            //transform.rotation = Quaternion.LookRotation(targetPos - this.gameObject.transform.position, Vector3.forward);
 
             ResizeCollider();
         }

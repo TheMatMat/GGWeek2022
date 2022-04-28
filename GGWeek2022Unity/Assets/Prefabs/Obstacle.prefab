@@ -128,6 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c791048c6bfa01489b5fea3010fef9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obstacleSpeed: 0
+  sprites:
+  - {fileID: 7482667652216324306, guid: 93875a46a08520745a53b807bb18f107, type: 3}
+  - {fileID: -9095717837082945937, guid: e1750487e743cd0429ed434525515c06, type: 3}
+  - {fileID: -2413806693520163455, guid: f5ad60fd576ff63499947f5eb7135c25, type: 3}
+  - {fileID: -2135585597343286014, guid: b7f8f62648408584b92ea3b23f7cbd66, type: 3}
   obstacle: {fileID: 786463350499909851}
   player: {fileID: 0}
   gm: {fileID: 0}

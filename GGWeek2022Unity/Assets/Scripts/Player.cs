@@ -47,7 +47,7 @@ namespace EntireGame
             {
                 playerPower = Power.SHIELD;
                 PlayerShield();
-                Debug.Log(playerPower);
+                //Debug.Log(playerPower);
             }
             else if (Input.GetKeyDown(KeyCode.Z) && !wasDashing)
             {
@@ -59,7 +59,6 @@ namespace EntireGame
                 currentReturnTime = 0;
 
                 playerPower = Power.DASH;
-                Debug.Log(originPosX + " - " + dashPosX);
 
                 // dash starts
                 isDashing = true;
@@ -70,13 +69,13 @@ namespace EntireGame
             {
                 isJumping = true;
                 playerPower = Power.JUMP;
-                Debug.Log(playerPower);
+                //Debug.Log(playerPower);
             }
             else if (Input.GetKeyDown(KeyCode.R))
             {
                 playerPower = Power.ATTACK;
                 PlayerAttack();
-                Debug.Log(playerPower);
+                //Debug.Log(playerPower);
             }
 
             //deactivate power

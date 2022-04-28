@@ -4,22 +4,27 @@ using UnityEngine;
 
 namespace EntireGame
 {
-    public class ObstacleFireWall : Obstacle
+    public class ObstacleFireBall : Obstacle
     {
-        public Sprite obstacleSprite;
+
+        public Vector3 targetPos, dir;
+        
 
         // Start is called before the first frame update
         void Start()
         {
+
             player = GameObject.FindWithTag("Player").GetComponent<Player>();
             gm = GameObject.Find("/GameManager").GetComponent<GameManager>();
 
             obstacleSpeed = gm.GeneralSpeed;
 
             sprites = this.gameObject.GetComponent<Obstacle>().sprites;
-            this.gameObject.transform.Find("ObstacleSprite").GetComponent<SpriteRenderer>().sprite = sprites[1];
+            this.gameObject.transform.Find("ObstacleSprite").GetComponent<SpriteRenderer>().sprite = sprites[2];
+            Debug.Log("fire ball");
 
-            Debug.Log("fire wall");
+            targetPos = player.gameObject.transform.position;
+            dir = (targetPos - this.gameObject.transform.position).normalized;
         }
 
         // Update is called once per frame
@@ -28,23 +33,16 @@ namespace EntireGame
             obstacleSpeed = gm.GeneralSpeed;
 
             //obstacleMove
-            transform.position -= new Vector3(2.0f * obstacleSpeed * 1.5f * Time.deltaTime, 0, 0);
 
-            if(this.gameObject.transform.position.y < -10)
-            {
-                Destroy(this.gameObject);
-            }
+            //transform.position -= new Vector3(2.0f * obstacleSpeed * Time.deltaTime, 0, 0);
+            transform.position += dir * 10.0f * Time.deltaTime;
         }
 
         public override void CheckForDeath()
         {
-            if(player.playerPower != Power.SHIELD)
-            {
-                gm.GameOver();
-            }
+            gm.GameOver();
+            Destroy(this.gameObject);
         }
-
-
     }
 }
 

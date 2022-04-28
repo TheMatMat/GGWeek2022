@@ -4,10 +4,8 @@ using UnityEngine;
 
 namespace EntireGame
 {
-    public class ObstacleFireWall : Obstacle
+    public class ObstacleWeapon : Obstacle
     {
-        public Sprite obstacleSprite;
-
         // Start is called before the first frame update
         void Start()
         {
@@ -15,11 +13,9 @@ namespace EntireGame
             gm = GameObject.Find("/GameManager").GetComponent<GameManager>();
 
             obstacleSpeed = gm.GeneralSpeed;
-
             sprites = this.gameObject.GetComponent<Obstacle>().sprites;
-            this.gameObject.transform.Find("ObstacleSprite").GetComponent<SpriteRenderer>().sprite = sprites[1];
-
-            Debug.Log("fire wall");
+            this.gameObject.transform.Find("ObstacleSprite").GetComponent<SpriteRenderer>().sprite = sprites[0];
+            Debug.Log("weapon");
         }
 
         // Update is called once per frame
@@ -28,23 +24,13 @@ namespace EntireGame
             obstacleSpeed = gm.GeneralSpeed;
 
             //obstacleMove
-            transform.position -= new Vector3(2.0f * obstacleSpeed * 1.5f * Time.deltaTime, 0, 0);
-
-            if(this.gameObject.transform.position.y < -10)
-            {
-                Destroy(this.gameObject);
-            }
+            transform.position -= new Vector3(2.0f * obstacleSpeed * 2.5f * Time.deltaTime, 0, 0);
         }
 
         public override void CheckForDeath()
         {
-            if(player.playerPower != Power.SHIELD)
-            {
                 gm.GameOver();
-            }
         }
-
-
     }
 }
 

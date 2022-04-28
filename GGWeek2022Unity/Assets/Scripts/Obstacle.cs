@@ -9,6 +9,7 @@ namespace EntireGame
         [SerializeField]
         public float obstacleSpeed;
 
+        public List<Sprite> sprites;
 
         public GameObject obstacle;
         public Player player;
@@ -21,14 +22,18 @@ namespace EntireGame
             gm = GameObject.Find("/GameManager").GetComponent<GameManager>();
 
             obstacleSpeed = gm.GeneralSpeed;
-        }
+        }   
 
         // Update is called once per frame
         void Update()
         {
-            
             //check and update speed
             obstacleSpeed = gm.GeneralSpeed;
+
+            if (obstacle.transform.position.x < -10)
+            {
+                Destroy(this.gameObject);
+            }
         }
 
         public void OnTriggerEnter2D(Collider2D other)

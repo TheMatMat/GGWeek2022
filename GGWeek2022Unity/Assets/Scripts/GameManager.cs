@@ -1,11 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace EntireGame
 {
     public class GameManager : MonoBehaviour
     {
+        public bool  isGameOver = false;
+        private int score = 0;
+        public int Score
+        {
+            get { return score; }
+            set { score = value; }
+        }
+        public GameObject scoreText;
+
         [Header("-- BG Tiles --")]
         [SerializeField]
         public List<GameObject> backgroundTilesBG;
@@ -32,6 +42,8 @@ namespace EntireGame
         public GameObject obstaclePrefab;
         public bool canSpawnObstacle = false;
         public float spawnDelay = 3.0f;
+
+        private float elapsedScoreTime = 0;
 
         // Start is called before the first frame update
         void Start()
@@ -72,21 +84,33 @@ namespace EntireGame
         // Update is called once per frame
         void Update()
         {
-            if (backgroundTilesBG[0].transform.position.x < -200)
+            if(!isGameOver)
             {
-                SpawnNewTile(0);
-            }
+                if (backgroundTilesBG[0].transform.position.x < -200)
+                {
+                    SpawnNewTile(0);
+                }
 
-            if (backgroundTilesFG[0].transform.position.x < -20)
-            {
-                SpawnNewTile(1);
-            }
+                if (backgroundTilesFG[0].transform.position.x < -20)
+                {
+                    SpawnNewTile(1);
+                }
 
 
-            if (Time.time > nextUpdate && generalSpeed <= maxSpeed)
-            {
-                generalSpeed += 0.5f;
-                nextUpdate += timeBtwnSpeedUpdate;
+                if (Time.time > nextUpdate && generalSpeed <= maxSpeed)
+                {
+                    generalSpeed += 0.5f;
+                    nextUpdate += timeBtwnSpeedUpdate;
+                }
+
+                elapsedScoreTime += Time.deltaTime;
+
+                if(elapsedScoreTime >= 1.0f)
+                {
+                    score += 50;
+                    scoreText.GetComponent<Text>().text = score.ToString();
+                    elapsedScoreTime = 0;
+                }
             }
 
         }
@@ -184,6 +208,7 @@ namespace EntireGame
         {
             generalSpeed = 0;
             canSpawnObstacle = false;
+            isGameOver = true;
         }
     }
 }

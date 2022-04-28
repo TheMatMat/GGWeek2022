@@ -164,7 +164,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
 --- !u!1 &2925054157876187583
 GameObject:
@@ -229,8 +229,7 @@ MonoBehaviour:
   isJumping: 0
   isDashing: 0
   wasDashing: 0
-  playerCollider: {fileID: 4731211897867954548}
-  actionZoneCollider: {fileID: 8868801630072174775}
+  obstaclesInRange: []
 --- !u!50 &1069630224386836461
 Rigidbody2D:
   serializedVersion: 4

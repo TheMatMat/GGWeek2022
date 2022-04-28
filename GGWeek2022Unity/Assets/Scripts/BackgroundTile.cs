@@ -9,6 +9,10 @@ namespace EntireGame
     {
         public GameManager gm;
         private float tileSpeed;
+        private float selfSpeedRatio = 1;
+
+        public float bgSpeedRatio = 0.8f;
+        public float fgSpeedRatio = 1.5f;
 
         public float TileSpeed
         {
@@ -21,7 +25,10 @@ namespace EntireGame
         public Color randomColor;
         public Sprite tileSprite;
 
-        private List<Sprite> availableSprites;
+        [SerializeField]
+        public List<Sprite> availableSpritesBG;
+        [SerializeField]
+        public List<Sprite> availableSpritesFG;
 
 
         // Start is called before the first frame update
@@ -31,13 +38,13 @@ namespace EntireGame
 
             tileSpeed = gm.GeneralSpeed;
 
-            randomColor = new Color(Random.Range(0F,1F), Random.Range(0, 1F), Random.Range(0, 1F));
+            //randomColor = new Color(Random.Range(0F,1F), Random.Range(0, 1F), Random.Range(0, 1F));
 
             /*//apply random sprite
             int index = Random.Range(0, availableSprites.Count - 1);
             tile.GetComponent<SpriteRenderer>().sprite = availableSprites[index];*/
 
-            tile.GetComponent<SpriteRenderer>().material.color = randomColor;
+            /*tile.GetComponent<SpriteRenderer>().sprite = availableSprites[0];*/
         }
 
         // Update is called once per frame
@@ -47,8 +54,25 @@ namespace EntireGame
             tileSpeed = gm.GeneralSpeed;
 
             //tileMove
-            transform.position -= new Vector3(2.0f * tileSpeed * Time.deltaTime, 0, 0);
+            transform.position -= new Vector3(2.0f * tileSpeed * selfSpeedRatio * Time.deltaTime, 0, 0);
 
+        }
+
+        public void SetSprite(int layer, int index = 0)
+        {
+            switch (layer)
+            {
+                case 0:
+                    tile.GetComponent<SpriteRenderer>().sprite = availableSpritesBG[index];
+                    selfSpeedRatio = bgSpeedRatio;
+                    break;
+                case 1:
+                    tile.GetComponent<SpriteRenderer>().sprite = availableSpritesFG[Random.Range(0, availableSpritesFG.Count)];
+                    selfSpeedRatio = fgSpeedRatio;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

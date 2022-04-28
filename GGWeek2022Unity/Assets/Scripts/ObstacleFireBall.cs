@@ -25,6 +25,8 @@ namespace EntireGame
 
             targetPos = player.gameObject.transform.position;
             dir = (targetPos - this.gameObject.transform.position).normalized;
+
+            ResizeCollider();
         }
 
         // Update is called once per frame

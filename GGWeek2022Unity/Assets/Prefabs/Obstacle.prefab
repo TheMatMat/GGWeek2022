@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.4528302, g: 0.3733713, b: 0.3733713, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -130,10 +130,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleSpeed: 0
   sprites:
-  - {fileID: 7482667652216324306, guid: 93875a46a08520745a53b807bb18f107, type: 3}
-  - {fileID: -9095717837082945937, guid: e1750487e743cd0429ed434525515c06, type: 3}
-  - {fileID: -2413806693520163455, guid: f5ad60fd576ff63499947f5eb7135c25, type: 3}
-  - {fileID: -2135585597343286014, guid: b7f8f62648408584b92ea3b23f7cbd66, type: 3}
+  - {fileID: 21300000, guid: 5bae739d4c4dc034bad35aec6931f3ca, type: 3}
+  - {fileID: 21300000, guid: db5f928b52ad26b4cb52e79f3f0184fa, type: 3}
+  - {fileID: 21300000, guid: b86912fbd3953d044b235244fc8d01bf, type: 3}
+  - {fileID: 21300000, guid: 3672890e3f17ed7478cf60968ffc4ddd, type: 3}
   obstacle: {fileID: 786463350499909851}
   player: {fileID: 0}
   gm: {fileID: 0}

@@ -56,6 +56,12 @@ namespace EntireGame
 
         }
 
+        public void ResizeCollider()
+        {
+            Vector2 S = gameObject.transform.Find("ObstacleSprite").GetComponent<SpriteRenderer>().sprite.bounds.size;
+            gameObject.GetComponent<BoxCollider2D>().size = S;
+        }
+
     }
 }
 

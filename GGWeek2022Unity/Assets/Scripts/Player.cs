@@ -40,6 +40,23 @@ namespace EntireGame
         public AudioSource Shield;
         public AudioSource Rock;
 
+        private bool doJump = false;
+        private bool jumpImput1 = false;
+        private bool jumpImput2 = false;
+
+        private bool doDash = false;
+        private bool dashImput1 = false;
+        private bool dashImput2 = false;
+
+        private bool doShield = false;
+        private bool shieldImput1 = false;
+        private bool shieldImput2 = false;
+
+        private bool doAttack = false;
+        private bool attackImput1 = false;
+        private bool attackImput2 = false;
+
+
         // Start is called before the first frame update
         void Start()
         {
@@ -49,42 +66,160 @@ namespace EntireGame
         // Update is called once per frame
         void Update()
         {
+            //shield
+            if(Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                shieldImput1 = true;
+            }
+            else if(Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                shieldImput1 = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                shieldImput2 = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                shieldImput2 = false;
+            }
+
+            if(shieldImput1 && shieldImput2)
+            {
+                doShield = true;
+            }
+            else
+            {
+                doShield = false;
+            }
+
+            //dash
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                dashImput1 = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                dashImput1 = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                dashImput2 = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                dashImput2 = false;
+            }
+
+
+            if (dashImput1 && dashImput2)
+            {
+                doDash = true;
+            }
+            else
+            {
+                doDash = false;
+            }
+
+            //jump
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                jumpImput1 = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                jumpImput1 = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                jumpImput2 = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                jumpImput2 = false;
+            }
+
+
+            if (jumpImput1 && jumpImput2)
+            {
+                doJump = true;
+            }
+            else
+            {
+                doJump = false;
+            }
+
+
+            //attack
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                attackImput1 = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                attackImput1 = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                attackImput2 = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.RightArrow))
+            {
+                attackImput2 = false;
+            }
+
+
+            if (attackImput1 && attackImput2)
+            {
+                doAttack = true;
+            }
+            else
+            {
+                doAttack = false;
+            }
+
+
             //activate power + proceed action
-            if (Input.GetKeyDown(KeyCode.A))
+            if ((doShield || Input.GetKeyUp(KeyCode.A)))
             {
                 playerPower = Power.SHIELD;
                 PlayerShield();
 
-                anim.SetTrigger("Shield");
+                /*anim.SetTrigger("Shield");*/
+                anim.SetBool("isShieldOn", true);
                 Shield.Play(0);
                 //Debug.Log(playerPower);
             }
-            else if (Input.GetKeyDown(KeyCode.Z) && !wasDashing)
+            else if ((doDash || Input.GetKeyUp(KeyCode.Z)) && !isDashing && !wasDashing)
             {
-                // dash reset
-                originPosX = transform.position.x;
-                dashPosX = originPosX + dashLength;
+                    // dash reset
+                    originPosX = transform.position.x;
+                    dashPosX = originPosX + dashLength;
 
-                currentDashTime = 0;
-                currentReturnTime = 0;
+                    currentDashTime = 0;
+                    currentReturnTime = 0;
 
-                playerPower = Power.DASH;
+                    playerPower = Power.DASH;
 
-                Dash.Play(0);
-                anim.SetTrigger("Dash");
+                    Dash.Play(0);
+                    anim.SetTrigger("Dash");
 
-                // dash starts
-                isDashing = true;
+                    // dash starts
+                    isDashing = true;
 
-                Invoke("ResetPower", dashTime + returnTime);
+                    Invoke("ResetPower", dashTime + returnTime);
             }
-            else if (Input.GetKeyDown(KeyCode.E) && playerPower != Power.JUMP)
+            else if ((doJump || Input.GetKeyUp(KeyCode.E)) && playerPower != Power.JUMP)
             {
                 isJumping = true;
                 playerPower = Power.JUMP;
                 //Debug.Log(playerPower);
             }
-            else if (Input.GetKeyDown(KeyCode.R))
+            else if (doAttack)
             {
                 playerPower = Power.ATTACK;
                 PlayerAttack();
@@ -96,6 +231,7 @@ namespace EntireGame
             //deactivate power
             if (Input.GetKeyUp(KeyCode.A))
             {
+                anim.SetBool("isShieldOn", false);
                 ResetPower();
             }   
             else if (Input.GetKeyUp(KeyCode.R))

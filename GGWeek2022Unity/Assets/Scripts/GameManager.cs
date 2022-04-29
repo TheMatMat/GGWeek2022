@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace EntireGame
@@ -15,6 +16,7 @@ namespace EntireGame
             set { score = value; }
         }
         public GameObject scoreText;
+        public GameObject deathImg;
 
         [Header("-- BG Tiles --")]
         [SerializeField]
@@ -27,7 +29,7 @@ namespace EntireGame
 
         [Header("-- Game Speed --")]
         [SerializeField]
-        private float generalSpeed;
+        private float generalSpeed = 2.0f;
         public float maxSpeed;
 
         public float GeneralSpeed
@@ -46,6 +48,14 @@ namespace EntireGame
         private float elapsedScoreTime = 0;
 
         // Start is called before the first frame update
+        void Awake()
+        {
+            canSpawnObstacle = true;
+
+            generalSpeed = 2.0f;
+            nextUpdate = timeBtwnSpeedUpdate;
+        }
+
         void Start()
         {
             canSpawnObstacle = true;
@@ -206,9 +216,19 @@ namespace EntireGame
 
         public void GameOver()
         {
-            generalSpeed = 0;
+            generalSpeed = 2.0f;
             canSpawnObstacle = false;
             isGameOver = true;
+            deathImg.SetActive(true);
+
+            scoreText.GetComponent<Text>().color = Color.white;
+
+            Invoke("BackMainMenu", 3.0f);
+        }
+
+        public void BackMainMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }

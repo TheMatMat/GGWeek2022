@@ -27,7 +27,7 @@ namespace EntireGame
             obstacleSpeed = gm.GeneralSpeed;
 
             //obstacleMove
-            transform.position -= new Vector3(2.0f * obstacleSpeed * 3.0f * Time.deltaTime, 0, 0);
+            transform.position -= new Vector3(2.0f * obstacleSpeed * 1.8f * Time.deltaTime, 0, 0);
         }
 
         public override void CheckForDeath()

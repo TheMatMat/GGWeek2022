@@ -96,13 +96,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
+  bgSpeedRatio: 0.8
+  fgSpeedRatio: 1.5
   tile: {fileID: 7696013360207084675}
   randomColor: {r: 0, g: 0, b: 0, a: 0}
   tileSprite: {fileID: 0}
   availableSpritesBG:
   - {fileID: 21300000, guid: 9a14cc6e56c2a2a4693e9098fdfbb0ba, type: 3}
   - {fileID: 21300000, guid: 455de6c9b2549d14e88eac762876faf2, type: 3}
-  - {fileID: 21300000, guid: c8d567b50b4431d44aa36ee8eaa0d5b6, type: 3}
+  - {fileID: 21300000, guid: 5a3f3e69155ff7c45b8cd0935fdd347b, type: 3}
   availableSpritesFG:
   - {fileID: 21300000, guid: 58fbb05cd2a7dba45b7163bb0018f7a3, type: 3}
   - {fileID: 21300000, guid: 4581cfbcdb2345447a670f76bd32d15b, type: 3}

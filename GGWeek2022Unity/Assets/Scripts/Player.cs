@@ -34,6 +34,11 @@ namespace EntireGame
         public List<Obstacle> obstaclesInRange;
 
         public Animation runAnim;
+        public Animator anim;
+
+        public AudioSource Dash;
+        public AudioSource Shield;
+        public AudioSource Rock;
 
         // Start is called before the first frame update
         void Start()
@@ -49,6 +54,9 @@ namespace EntireGame
             {
                 playerPower = Power.SHIELD;
                 PlayerShield();
+
+                anim.SetTrigger("Shield");
+                Shield.Play(0);
                 //Debug.Log(playerPower);
             }
             else if (Input.GetKeyDown(KeyCode.Z) && !wasDashing)
@@ -61,6 +69,9 @@ namespace EntireGame
                 currentReturnTime = 0;
 
                 playerPower = Power.DASH;
+
+                Dash.Play(0);
+                anim.SetTrigger("Dash");
 
                 // dash starts
                 isDashing = true;
@@ -77,6 +88,8 @@ namespace EntireGame
             {
                 playerPower = Power.ATTACK;
                 PlayerAttack();
+
+                anim.SetTrigger("Att");
                 //Debug.Log(playerPower);
             }
 
